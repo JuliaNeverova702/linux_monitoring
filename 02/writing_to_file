@@ -1,0 +1,11 @@
+. ./set_value
+
+function writing_to_file {
+echo "Do you want to write information to a file? (Y/N)"
+
+read solution
+
+if [[ $solution == "y" || $solution == "Y" ]]; then
+    set_value > "$(date "+%d_%m_%y_%H_%M_%S.status")"
+fi
+}

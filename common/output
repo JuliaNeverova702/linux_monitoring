@@ -1,0 +1,44 @@
+function value_output {
+    echo -e "${FIRST}HOSTNAME${ENDCOLOR}        = ${SECOND}${HOSTNAME}${ENDCOLOR}"
+    echo -e "${FIRST}TIMEZONE${ENDCOLOR}        = ${SECOND}${TIMEZONE}${ENDCOLOR}"
+    echo -e "${FIRST}USER${ENDCOLOR}            = ${SECOND}${USER}${ENDCOLOR}"
+    echo -e "${FIRST}OS${ENDCOLOR}              = ${SECOND}${OS}${ENDCOLOR}"
+    echo -e "${FIRST}DATE${ENDCOLOR}            = ${SECOND}${DATE}${ENDCOLOR}"
+    echo -e "${FIRST}UPTIME${ENDCOLOR}          = ${SECOND}${UPTIME} ${ENDCOLOR}"
+    echo -e "${FIRST}UPTIME_SEC${ENDCOLOR}      = ${SECOND}${UPTIME_SEC}${ENDCOLOR}"
+    echo -e "${FIRST}IP${ENDCOLOR}              = ${SECOND}${IP}${ENDCOLOR}"
+    echo -e "${FIRST}MASK${ENDCOLOR}            = ${SECOND}${MASK}${ENDCOLOR}"
+    echo -e "${FIRST}GATEWAY${ENDCOLOR}         = ${SECOND}${GATEWAY}${ENDCOLOR}"
+    echo -e "${FIRST}RAM_TOTAL${ENDCOLOR}       = ${SECOND}${RAM_TOTAL}${ENDCOLOR}"
+    echo -e "${FIRST}RAM_USED${ENDCOLOR}        = ${SECOND}${RAM_USED}${ENDCOLOR}"
+    echo -e "${FIRST}RAM_FREE${ENDCOLOR}        = ${SECOND}${RAM_FREE}${ENDCOLOR}"
+    echo -e "${FIRST}SPACE_ROOT${ENDCOLOR}      = ${SECOND}${SPACE_ROOT}${ENDCOLOR}"
+    echo -e "${FIRST}SPACE_ROOT_USED${ENDCOLOR} = ${SECOND}${SPACE_ROOT_USED}${ENDCOLOR}"
+    echo -e "${FIRST}SPACE_ROOT_FREE${ENDCOLOR} = ${SECOND}${SPACE_ROOT_FREE}${ENDCOLOR}"
+}
+
+function color_output {
+    if [[ ${availability[0]} -eq 0 ]]; then 
+        echo "Column 1 background = ${column1_background} (${COLOR_NAME[column1_background]})"
+    else
+        echo "Column 1 background = default (${COLOR_NAME[column1_background]})"
+    fi
+
+    if [[ ${availability[1]} -eq 0 ]]; then 
+        echo "Column 1 font color = ${column1_font_color} (${COLOR_NAME[column1_font_color]})"
+    else
+        echo "Column 1 font color = default (${COLOR_NAME[column1_font_color]})"
+    fi
+
+    if [[ ${availability[2]} -eq 0 ]]; then 
+        echo "Column 2 background = ${column2_background} (${COLOR_NAME[column2_background]})"
+    else
+        echo "Column 2 background = default (${COLOR_NAME[column2_background]})"
+    fi
+
+    if [[ ${availability[3]} -eq 0 ]]; then 
+        echo "Column 2 font color = ${column2_font_color} (${COLOR_NAME[column2_font_color]})"
+    else
+        echo "Column 2 font color = default (${COLOR_NAME[column2_font_color]})"
+    fi
+}

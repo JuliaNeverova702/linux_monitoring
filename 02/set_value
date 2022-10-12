@@ -1,0 +1,18 @@
+function set_value {
+echo HOSTNAME = `hostname`
+echo TIMEZONE = `timedatectl | grep "Time zone" | awk {'print $3, $4, $5'}`
+echo USER = `whoami`
+echo OS = `cat /../../../../etc/issue | awk {'print $1, $2, $3'}`
+echo DATE = `date | awk {'print $2, $3, $4, $5'}`
+echo UPTIME = `uptime -p | awk {'print $2, $3, $4, $5'}`
+echo UPTIME_SEC = `cat /proc/uptime | awk {'print $1'}`
+echo IP = `ifconfig enp0s3 | grep -m 1 inet | awk {'print $2'}`
+echo MASK = `ifconfig | grep -m 1 netmask | awk {'print $2'}`
+echo GATEWAY = `ip route | grep -m 1 default | awk {'print $3'}`
+echo RAM_TOTAL = `free -m | grep "Mem" | awk '{printf "%.3f GB", ($2/1024)}'`
+echo RAM_USED = `free -m | grep "Mem" | awk '{printf "%.3f GB", ($3/1024)}'`
+echo RAM_FREE = `free -m | grep "Mem" | awk '{printf "%.3f GB", ($4/1024)}'`
+echo SPACE_ROOT = `df -hBM | grep -m 1 /dev/ | awk '{printf "%.2f MB", ($2)}'`
+echo SPACE_ROOT_USED = `df -hBM | grep -m 1 /dev/ | awk '{printf "%.2f MB", ($3)}'`
+echo SPACE_ROOT_FREE = `df -hBM | grep -m 1 /dev/ | awk '{printf "%.2f MB", ($4)}'`
+}

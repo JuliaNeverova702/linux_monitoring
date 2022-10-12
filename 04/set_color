@@ -1,0 +1,49 @@
+. ./config
+. ./../common/set_value
+
+COLOR_NAME=( "pure" "white" "red" "green" "blue" "purple" "black" )
+
+COLOR_B=( "\033[0m" "\033[47m" "\033[41m" "\033[42m" "\033[44m" "\033[45m" "\033[40m" )
+COLOR_T=( "\033[0m" "\033[37m" "\033[31m" "\033[32m" "\033[34m" "\033[35m" "\033[30m" )
+
+ENDCOLOR="\033[0m"
+
+availability=( 0 0 0 0 )
+default_background=1;
+default_font_color=5;
+
+
+if [[ -z ${column1_background} ]]; then
+    availability[0]=1
+    if [[ ${default_background} -eq ${column1_font_color} ]]; then
+        ((default_background++))
+    fi
+    column1_background=${default_background}
+fi
+
+if [[ -z ${column1_font_color} ]]; then
+    availability[1]=1
+    if [[ ${default_font_color} -eq ${column1_background} ]]; then
+        ((default_font_color++))
+    fi
+    column1_font_color=${default_font_color}
+fi
+
+if [[ -z ${column2_background} ]]; then
+    availability[2]=1
+    if [[ ${default_background} -eq ${column2_font_color} ]]; then
+        ((default_background++))
+    fi
+    column2_background=${default_background}
+fi
+
+if [[ -z ${column2_font_color} ]]; then
+    availability[3]=1
+    if [[ ${default_font_color} -eq ${column2_background} ]]; then
+        ((default_font_color++))
+    fi
+    column2_font_color=${default_font_color}
+fi
+
+FIRST=${COLOR_B[$column1_background]}${COLOR_T[$column1_font_color]}
+SECOND=${COLOR_B[$column2_background]}${COLOR_T[$column2_font_color]}
