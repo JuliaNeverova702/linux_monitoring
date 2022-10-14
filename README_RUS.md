@@ -1,4 +1,4 @@
-# s21_Linux_monitoring
+# Linux_monitoring
 
 Базовые сценарии bash для Linux и системные исследования.
 
